@@ -1,13 +1,13 @@
-# KitchenChatbot 🍳🤖
+# TransportsChatbot 🍳🤖
 
-![CI](https://github.com/Selma-mtch/KitchenChatbot/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Selma-mtch/TransportsChatbot/actions/workflows/ci.yml/badge.svg)
 
 Chatbot spécialisé dans le domaine de la cuisine utilisant une architecture Full Stack avec React, Flask et une approche RAG (Retrieval-Augmented Generation).
 
 # 📁 Structure du projet
 
 ```bash
-KitchenChatbot/
+TransportsChatbot/
 │
 ├── backend/
 │   ├── app.py                 # Point d'entrée Flask
@@ -40,13 +40,13 @@ KitchenChatbot/
 ## 1️⃣ Cloner le projet
 
 ```bash
-git clone git@github.com:Selma-mtch/KitchenChatbot.git
+git clone git@github.com:Selma-mtch/TransportsChatbot.git
 ```
 
 Puis :
 
 ```bash
-cd KitchenChatbot
+cd TransportsChatbot
 ```
 
 ---
@@ -178,13 +178,14 @@ http://localhost:5173
 
 ---
 
-## 🍳 Domaine spécialisé : Cuisine
+## 🍳 Domaine spécialisé : Transports
 
-- Questions culinaires
-- Conseils recettes
-- Techniques de cuisine
+- horaires
+- tarifs
+- abonnements
+- remboursement
+- procédures administratives
 - Recherche d’informations dans les documents
-
 ---
 
 ## 🧠 Intelligence Artificielle
