@@ -12,6 +12,7 @@ export default function ChatPage() {
   const [activeSession, setActiveSession] = useState(null)  // conversation actuellement ouverte
   const [messages, setMessages] = useState([])         // messages de la conversation active
   const [sending, setSending] = useState(false)        // true pendant qu'on attend la réponse du bot
+  const [sidebarOpen, setSidebarOpen] = useState(false) // menu latéral ouvert (mobile)
 
   // On charge les conversations dès que la page s'affiche
   useEffect(() => { fetchSessions() }, [])
@@ -25,6 +26,7 @@ export default function ChatPage() {
 
   // Crée une nouvelle conversation vide
   const createSession = async () => {
+    setSidebarOpen(false)
     const r = await client.post('/chat/sessions', {})
     setSessions(prev => [r.data, ...prev])
     setActiveSession(r.data)
@@ -33,6 +35,7 @@ export default function ChatPage() {
 
   // Change de conversation et charge ses messages
   const selectSession = async (session) => {
+    setSidebarOpen(false)
     if (activeSession?.id === session.id) return
     setActiveSession(session)
     setMessages([])
@@ -99,15 +102,23 @@ export default function ChatPage() {
         sessions={sessions}
         activeSession={activeSession}
         user={user}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
         onSelect={selectSession}
         onCreate={createSession}
         onDelete={deleteSession}
         onLogout={logout}
       />
+      {sidebarOpen && <div className="sidebar-backdrop" onClick={() => setSidebarOpen(false)} />}
       <main className="chat-main">
         {activeSession ? (
           <>
             <header className="chat-header">
+              <button className="menu-btn" onClick={() => setSidebarOpen(true)} aria-label="Ouvrir le menu">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+              </button>
               <h2>{activeSession.title}</h2>
             </header>
             <ChatWindow messages={messages} sending={sending} />
@@ -116,6 +127,11 @@ export default function ChatPage() {
         ) : (
           // Page d'accueil affichée quand aucune conversation n'est sélectionnée
           <div className="chat-empty">
+            <button className="menu-btn menu-btn--floating" onClick={() => setSidebarOpen(true)} aria-label="Ouvrir le menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              </svg>
+            </button>
             <div className="empty-logo">
               <img src="/logo.png" alt="NavigIA" />
             </div>

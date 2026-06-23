@@ -151,3 +151,48 @@
 }
 
 .btn-create:hover { opacity: 0.85; }
+
+/* ── Bouton menu hamburger (mobile uniquement) ── */
+.menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menu-btn:hover {
+  border-color: rgba(0, 87, 168, 0.5);
+  color: var(--text);
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 768px) {
+  .menu-btn { display: flex; }
+
+  .menu-btn--floating {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 5;
+  }
+
+  .chat-header {
+    padding: 0 14px;
+    gap: 12px;
+  }
+
+  .chat-empty {
+    padding: 64px 18px 40px;
+  }
+
+  .empty-title { font-size: 26px; }
+  .empty-logo img { width: 80px; height: 80px; }
+  .empty-subtitle { margin-bottom: 28px; }
+}
