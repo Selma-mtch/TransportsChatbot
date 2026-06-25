@@ -1,6 +1,6 @@
 # NavigIA - Assistant transports Ile-de-France
 
-NavigIA est une application full stack de chatbot specialise dans les transports en commun en France, avec un focus sur les donnees SNCF, Transilien, RATP et Ile-de-France Mobilites.
+NavigIA est une application full stack de chatbot specialisee dans les transports en commun en France, avec un focus sur les donnees SNCF, Transilien, RATP et Ile-de-France Mobilites.
 
 Le projet combine une interface React, une API Flask, une base SQLite, un pipeline RAG avec LangChain et ChromaDB, et un LLM appele via OpenRouter.
 
